@@ -38,18 +38,37 @@ class _HomePageState extends State<HomePage> with HomePagePresenter {
                 background: Container(
                   color: Colors.red,
                   child: Align(
-                    alignment:Alignment.centerRight,
-                    child: Icon(Icons.delete_outline,color: Colors.white,),
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.delete_outline,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 direction: DismissDirection.endToStart,
-                confirmDismiss: (direction)async{
+                confirmDismiss: (direction) async {
                   await onDeleteClient(index);
                   return true;
                 },
                 child: ListTile(
-                  title: Text(clients[index].name),
-                  onTap: ()=>onTapClient(context,index),
+                  leading: CircleAvatar(
+                    child: Text(
+                      clients[index].name.length > 0
+                          ? clients[index].name.substring(0, 1)
+                          : '',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  title: Text(
+                    clients[index].name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade900,
+                    ),
+                  ),
+                  onTap: () => onTapClient(context, index),
                 ),
               );
             },

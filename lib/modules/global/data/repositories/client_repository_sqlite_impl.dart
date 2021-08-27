@@ -10,17 +10,18 @@ class ClientRepositorySqliteImpl implements ClientRepository {
   ClientRepositorySqliteImpl(this.db);
 
   @override
-  Future<void> addClient({
+  Future<int> addClient({
     required String name,
     required String? knowledge,
   }) async {
-    await db.insert(
+    int id=await db.insert(
       'CLIENT',
       {
         'name': name,
         'knowledge': knowledge,
       },
     );
+    return id;
   }
 
   @override

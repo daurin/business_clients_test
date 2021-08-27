@@ -10,7 +10,7 @@ class ClientUseCases implements ClientRepository {
   }
 
   @override
-  Future<void> addClient({required String name, required String? knowledge}) {
+  Future<int> addClient({required String name, required String? knowledge}) {
     return _repository.addClient(name: name, knowledge: knowledge);
   }
 

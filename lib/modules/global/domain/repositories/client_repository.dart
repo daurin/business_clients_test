@@ -3,7 +3,7 @@ import 'package:business_clients_test/modules/global/domain/models/client_respon
 
 abstract class ClientRepository {
   
-  Future<void> addClient({
+  Future<int> addClient({
     required String name,
     required String? knowledge,
   });

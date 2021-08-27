@@ -74,7 +74,7 @@ class AddClientPagePresenter {
                       addresses.value = [
                         ...addresses.value,
                         Address(
-                          clientId: _clientId!,
+                          clientId: -1,
                           name: addressTextController.text,
                           id: DateTime.now().millisecondsSinceEpoch,
                         )
@@ -99,13 +99,13 @@ class AddClientPagePresenter {
         knowledge: knowledgeTextController.text,
       );
     } else {
-      await _clientService.addClient(
+      int newClientId=await _clientService.addClient(
         name: nameTextController.text,
         knowledge: knowledgeTextController.text,
       );
       for (Address item in addresses.value) {
         await _clientService.addAddress(
-          clientId: item.clientId,
+          clientId: newClientId,
           name: item.name,
         );
       }

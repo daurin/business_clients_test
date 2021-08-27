@@ -55,6 +55,7 @@ class _AddClientPageState extends State<AddClientPage>
       child: Column(
         children: [
           TextField(
+            autofocus: !editMode,
             controller: nameTextController,
             maxLength: 30,
             decoration: InputDecoration(
