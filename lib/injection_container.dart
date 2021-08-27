@@ -38,8 +38,10 @@ Future<Database> _initDatabase() async {
     onCreate: (db, version) async {
       try {
         String script = await rootBundle.loadString('lib/db/db_script.sql');
-        print(script);
-        await db.execute(script);
+        List<String> scriptSplit = script.split(';');
+        for (var e in scriptSplit) {
+          if(e.replaceAll(' ', '').length>0 &&e!='"')await db.execute(e);
+        }
         int clientId = await db.insert(
           'CLIENT',
           {

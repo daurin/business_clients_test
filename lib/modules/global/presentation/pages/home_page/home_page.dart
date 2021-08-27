@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> with HomePagePresenter {
               return Dismissible(
                 key: ValueKey(clients[index].id),
                 background: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
                   color: Colors.red,
                   child: Align(
                     alignment: Alignment.centerRight,
